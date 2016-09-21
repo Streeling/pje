@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>1.2. Utilitarul Apache Maven &mdash; Platforma Java Enterprise. Note de curs 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Platforma Java Enterprise. Note de curs 0.0.1 documentation" href="../../index.html" />
+    <link rel="up" title="1. Cuvînt introductiv" href="../index.html" />
+    <link rel="next" title="2. Persistență (JPA)" href="../../persistenta/index.html" />
+    <link rel="prev" title="1.1. Platforma Java Enterprise Edition" href="../java_ee/java_ee.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="utilitarul-apache-maven">
+<h1>1.2. Utilitarul Apache Maven<a class="headerlink" href="#utilitarul-apache-maven" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exercitii">
+<h2>1.2.1. Exerciții<a class="headerlink" href="#exercitii" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="crearea-unui-proiect-maven-model">
+<span id="crearea-unui-proiect-maven"></span><h3>1.2.1.1. Crearea unui proiect Maven model<a class="headerlink" href="#crearea-unui-proiect-maven-model" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="intellij-idea-community">
+<h4>1.2.1.1.1. IntelliJ IDEA Community<a class="headerlink" href="#intellij-idea-community" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">Lansați IntelliJ IDEA Community (versiunea 2016.2).</p>
+</li>
+<li><p class="first">Clic pe <em>File</em> din meniul principal, apoi clic <em>New &gt; Project...</em></p>
+</li>
+<li><p class="first">În fereastra de dailog <em>New Project</em>:</p>
+<ol class="loweralpha simple">
+<li>Selectați <em>Maven</em> în list verticală din stînga.</li>
+<li>Selectați JDK 1.8 <em>(1.8 java version &#8220;1.8.0_101&#8221;)</em> în lista derulantă <em>Project SDK</em>.</li>
+<li>Treceți la pasul următorul dînd clic pe butonul <em>Next</em>.</li>
+<li>Completați <em>GroupId</em> cu <em>java-ee-lab</em>.</li>
+<li>Completați <em>ArtifactId</em> cu <em>hello-world-maven-app</em>.</li>
+<li>Lăsați <em>Version</em> să fie <em>1.0-SNAPSHOT</em>.</li>
+<li>Treceți la pasul următorul dînd clic pe butonul <em>Next</em>.</li>
+<li>Completați <em>Project name:</em> cu <em>HelloWorldMavenApp</em>.</li>
+<li>Clic pe <em>Finish</em> și aștepți pînă cînd IDEA crează proiectul.</li>
+</ol>
+</li>
+<li><p class="first">În proiectul nou creat:</p>
+<ol class="loweralpha simple">
+<li>În colțul dreapta-jos va aparea o ferestră popup cu titlul <em>Maven projects need to be imported</em>; dați clic pe <em>Enable Auto-Import</em>.</li>
+<li>Din meniul principal <em>File &gt; Project Structure...</em></li>
+<li>În pagina <em>Project</em> asigurațivă că:<ol class="lowerroman">
+<li>în lista <em>Project SDK este aleasă opțiunea *1.8</em>;</li>
+<li>în lista <em>Project language level</em> este aleasă opțiunea <em>8 - Lambdas, type annotation etc.</em></li>
+</ol>
+</li>
+<li>Clic pe <em>OK</em>.</li>
+</ol>
+</li>
+<li><p class="first">Creați prima clasă:</p>
+<ol class="loweralpha">
+<li><p class="first">Treceți în zona din stînga unde este afișat structura proiectului sub formă de arbore (dacă lipsește această zonă atunci din meniul principal <em>View &gt; Tool Windows &gt; Project</em>).</p>
+</li>
+<li><p class="first">Deschideți nodul <em>src</em>, apoi nodul <em>main</em>.</p>
+</li>
+<li><p class="first">Clic de dreapta pe <em>java</em> (de sub nodul <em>main</em>) apoi <em>New &gt; Java Class</em>.</p>
+</li>
+<li><p class="first">În ferestra de dialog <em>Create New Class</em> scrieți <em>hwmaven.HelloWorldApp</em>.</p>
+</li>
+<li><p class="first">Veți observa că sub <em>java</em> a apărut dosarul <em>hwmaven</em>, care de fapt este pachetul <em>hwmaven</em>.</p>
+</li>
+<li><p class="first">Iar sub pachet-ul <em>hwmaven</em> a apărut clasa <em>HelloWorldApp</em>.</p>
+</li>
+<li><p class="first">Dublu clic pe această clasă și inserați următoarea metodă</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+<ol class="arabic simple" start="6">
+<li>Lansăm aplicația:<ol class="loweralpha">
+<li>Din meniul principal <em>Run &gt; Edit Configurations...</em></li>
+<li>Clic pe butonașul <em>+</em> și din lista de selecție alegeți <em>Application</em>.</li>
+<li>Completați <em>Name</em> cu <em>HelloWorldMavenApp</em>.</li>
+<li>În <em>Main class</em> clic pe butonul cu <em>...</em> și in fereastră apărută alegeți <em>HelloWorldApp</em> apoi <em>OK</em>.</li>
+<li>Din meniul principal <em>Run &gt; Run &#8216;HelloWorldMavenApp&#8217;</em>.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="eclipse">
+<h4>1.2.1.1.2. Eclipse<a class="headerlink" href="#eclipse" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">Lansați Eclipse (versiunea Neon).</p>
+</li>
+<li><p class="first">Clic pe <em>File</em> din meniul principal, apoi clic <em>New &gt; Project...</em></p>
+</li>
+<li><p class="first">În fereastra de dailog <em>New Project</em>:</p>
+<ol class="loweralpha simple">
+<li>Deschideți nodul <em>Maven</em> și selectați <em>Maven Project</em>.</li>
+<li>Treceți la pasul următorul dînd clic pe butonul <em>Next</em>.</li>
+<li>Bifați <em>Create a simple project (skip archetype selection)</em>.</li>
+<li>Treceți la pasul următorul dînd clic pe butonul <em>Next</em>.</li>
+<li>Completați <em>GroupId</em> cu <em>java-ee-lab</em>.</li>
+<li>Completați <em>ArtifactId</em> cu <em>hello-world-maven-app</em>.</li>
+<li>Lăsați <em>Version</em> să fie <em>1.0-SNAPSHOT</em>.</li>
+<li>Completați <em>Name:</em> cu <em>HelloWorldMavenApp</em>.</li>
+<li>Clic pe <em>Finish</em> și aștepți pînă cînd Eclipse crează proiectul.</li>
+</ol>
+</li>
+<li><p class="first">Creați prima clasă:</p>
+<ol class="loweralpha">
+<li><p class="first">Treceți în zona din stînga unde este afișat structura proiectului sub formă de arbore și alegeți pagina <em>Package Explorer</em>.</p>
+</li>
+<li><p class="first">Deschideți nodul <em>src</em> și clic de dreapta pe nodul <em>main</em> apoi <em>New &gt; Package</em>.</p>
+</li>
+<li><p class="first">În ferestra de dialog <em>New Java Package</em> scrieți <em>hwmaven</em>.</p>
+</li>
+<li><p class="first">Clic dreapta pe pachetul <em>hwmaven</em> apoi <em>New &gt; Class</em>.</p>
+</li>
+<li><p class="first">În ferestra de dialog <em>New Java Class</em> scrieți <em>HelloWorldApp</em>.</p>
+</li>
+<li><p class="first">Veți observa că sub <em>java</em> a apărut dosarul <em>hwmaven</em>, care de fapt este pachetul <em>hwmaven</em>.</p>
+</li>
+<li><p class="first">Iar sub pachet-ul <em>hwmaven</em> a apărut clasa <em>HelloWorldApp</em>.</p>
+</li>
+<li><p class="first">Dublu clic pe această clasă și inserați următoarea metodă</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">);</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+<ol class="arabic simple" start="6">
+<li>Lansăm aplicația:<ol class="loweralpha">
+<li>Din meniul principal <em>Run &gt; Run</em>.</li>
+</ol>
+</li>
+</ol>
+</div>
+<div class="section" id="netbeans">
+<h4>1.2.1.1.3. NetBeans<a class="headerlink" href="#netbeans" title="Permalink to this headline">¶</a></h4>
+<p>În curînd...</p>
+</div>
+<div class="section" id="doar-linia-de-comanda-si-un-simplu-editor-de-texte-in-lipsa-vreunui-mediu-de-dezvoltare">
+<h4>1.2.1.1.4. Doar linia de comandă și un simplu editor de texte (în lipsa vreunui mediu de dezvoltare)<a class="headerlink" href="#doar-linia-de-comanda-si-un-simplu-editor-de-texte-in-lipsa-vreunui-mediu-de-dezvoltare" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic">
+<li><p class="first">Lansați orice terminal.</p>
+</li>
+<li><p class="first">Executați:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mvn archetype:generate -DgroupId<span class="o">=</span>jav-ee-lab -DartifactId<span class="o">=</span>hello-world-maven-app -DarchetypeArtifactId<span class="o">=</span>maven-archetype-quickstart -DinteractiveMode<span class="o">=</span><span class="nb">false</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Treceți în dosarul <em>hello-world-maven-app</em> nou creat.</p>
+</li>
+<li><p class="first">În dosarul <em>src/main/java</em> creați dosarul <em>hwmaven</em>.</p>
+</li>
+<li><p class="first">În dosarul <em>hwmaven</em> creați fișierul <em>HelloWorldApp.java</em> cu conținutul:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kn">package</span> <span class="nn">hwmaven</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">HelloWorldApp</span> <span class="o">{</span>
+
+    <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+        <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello, world!&quot;</span><span class="o">);</span>
+    <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Compilați proiectul</p>
+<div class="highlight-bash"><div class="highlight"><pre>mvn compile
+</pre></div>
+</div>
+</li>
+<li><p class="first">Lansăm aplicația:</p>
+<ol class="loweralpha">
+<li><p class="first">Fie din linia de comandă:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mvn exec:java -Dexec.mainClass<span class="o">=</span>hwmaven.HelloWorldApp
+</pre></div>
+</div>
+</li>
+<li><p class="first">Fie în <em>pom.xml</em> adăugați:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="nt">&lt;build&gt;</span>
+    <span class="nt">&lt;plugins&gt;</span>
+        <span class="nt">&lt;plugin&gt;</span>
+            <span class="nt">&lt;groupId&gt;</span>org.codehaus.mojo<span class="nt">&lt;/groupId&gt;</span>
+            <span class="nt">&lt;artifactId&gt;</span>exec-maven-plugin<span class="nt">&lt;/artifactId&gt;</span>
+            <span class="nt">&lt;version&gt;</span>1.5.0<span class="nt">&lt;/version&gt;</span>
+            <span class="nt">&lt;configuration&gt;</span>
+                <span class="nt">&lt;mainClass&gt;</span>hwmaven.HelloWorldApp<span class="nt">&lt;/mainClass&gt;</span>
+                <span class="nt">&lt;cleanupDaemonThreads&gt;</span>false<span class="nt">&lt;/cleanupDaemonThreads&gt;</span>
+            <span class="nt">&lt;/configuration&gt;</span>
+        <span class="nt">&lt;/plugin&gt;</span>
+    <span class="nt">&lt;/plugins&gt;</span>
+<span class="nt">&lt;/build&gt;</span>
+</pre></div>
+</div>
+<p>și în linia de comandă rulați doar:</p>
+<div class="highlight-bash"><div class="highlight"><pre>mvn exec:java -Dexec.mainClass<span class="o">=</span>hwmaven.HelloWorldApp
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">1.2. Utilitarul Apache Maven</a><ul>
+<li><a class="reference internal" href="#exercitii">1.2.1. Exerciții</a><ul>
+<li><a class="reference internal" href="#crearea-unui-proiect-maven-model">1.2.1.1. Crearea unui proiect Maven model</a><ul>
+<li><a class="reference internal" href="#intellij-idea-community">1.2.1.1.1. IntelliJ IDEA Community</a></li>
+<li><a class="reference internal" href="#eclipse">1.2.1.1.2. Eclipse</a></li>
+<li><a class="reference internal" href="#netbeans">1.2.1.1.3. NetBeans</a></li>
+<li><a class="reference internal" href="#doar-linia-de-comanda-si-un-simplu-editor-de-texte-in-lipsa-vreunui-mediu-de-dezvoltare">1.2.1.1.4. Doar linia de comandă și un simplu editor de texte (în lipsa vreunui mediu de dezvoltare)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">1. Cuvînt introductiv</a><ul>
+      <li>Previous: <a href="../java_ee/java_ee.html" title="previous chapter">1.1. Platforma Java Enterprise Edition</a></li>
+      <li>Next: <a href="../../persistenta/index.html" title="next chapter">2. Persistență (JPA)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/cuv. introd/maven/maven.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Radu Dumbrăveanu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../../_sources/cuv. introd/maven/maven.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

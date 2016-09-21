@@ -1,0 +1,266 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>2.2. Gestionarul de entități JPA (EntityManager) &mdash; Platforma Java Enterprise. Note de curs 0.0.1 documentation</title>
+    
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '0.0.1',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="top" title="Platforma Java Enterprise. Note de curs 0.0.1 documentation" href="../../index.html" />
+    <link rel="up" title="2. Persistență (JPA)" href="../index.html" />
+    <link rel="next" title="3. Componente (sau Enterprise Java Beans)" href="../../componente/index.html" />
+    <link rel="prev" title="2.1. Entități JPA" href="../entitati/entitati.html" />
+   
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="gestionarul-de-entitati-jpa-entitymanager">
+<h1>2.2. Gestionarul de entități JPA (EntityManager)<a class="headerlink" href="#gestionarul-de-entitati-jpa-entitymanager" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exercitii">
+<h2>2.2.1. Exerciții<a class="headerlink" href="#exercitii" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="entitymanager">
+<h3>2.2.1.1. EntityManager<a class="headerlink" href="#entitymanager" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first"><a class="reference internal" href="../../cuv. introd/maven/maven.html#crearea-unui-proiect-maven"><span>Creați un proiect Maven</span></a> cu numele <em>FruitManager</em>.</p>
+</li>
+<li><p class="first">În dosarul <em>src/main/java</em> creați pachetul <em>fruitmgr</em>.</p>
+</li>
+<li><p class="first">În cadrul acestui pachet creați clasa <em>FruitManagerApp</em>.</p>
+</li>
+<li><p class="first">În cadrul pachetului <em>fruitmgr</em> creați subpachetul <em>domain</em>.</p>
+</li>
+<li><p class="first">În cadrul pachetului <em>domain</em> creați clasa <em>Fruit</em>.</p>
+</li>
+<li><p class="first">Deschideți fișierul <em>pom.xml</em> șî adăugați dependința pentru Hibernate EntityManager:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- https://mvnrepository.com/artifact/org.hibernate/hibernate-entitymanager --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>org.hibernate<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>hibernate-entitymanager<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>5.2.2.Final<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Treceți in clasa <em>Fruit</em> și aplicați pe aceasta adnotarea <code class="code docutils literal"><span class="pre">&#64;Entity</span></code> (<code class="code docutils literal"><span class="pre">javax.persistence</span></code>).</p>
+</li>
+<li><p class="first">Adăugați 3 atribute <code class="code docutils literal"><span class="pre">private</span></code> la această clasă:</p>
+<ol class="loweralpha simple">
+<li><em>id</em> de tip <code class="code docutils literal"><span class="pre">Long</span></code>.</li>
+<li><em>name</em> de tip <code class="code docutils literal"><span class="pre">String</span></code>.</li>
+<li><em>price</em> de tip <code class="code docutils literal"><span class="pre">BigDecimal</span></code>.</li>
+</ol>
+</li>
+<li><p class="first">Pentru fiecare dintre aceste atribute creați metodele getter și setter.</p>
+<ol class="loweralpha simple">
+<li>În IDEA puneți cursorul pe clasă, clic de dreapta și alegeți <em>Generate... &gt; Getter and Setter</em>.</li>
+<li>În Eclipse puneți cursorul pe clasă, clic de dreapta și alegeți <em>Source &gt; Generate Getters and Setters...</em>.</li>
+</ol>
+</li>
+<li><p class="first">Pe metoda getter pentru atributul <em>id</em> aplicați adnotările:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="nd">@Id</span>
+<span class="nd">@GeneratedValue</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">În dosarul <em>resources</em> adăugați fișierul <em>META-INF/persistence.xml</em> (clic dreapta pe <em>resources</em> și <em>New &gt; File</em>) cu următorul conținut:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; ?&gt;</span>
+<span class="nt">&lt;persistence</span> <span class="na">xmlns=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/persistence&quot;</span>
+             <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+             <span class="na">xsi:schemaLocation=</span><span class="s">&quot;http://xmlns.jcp.org/xml/ns/persistence</span>
+<span class="s">             http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd&quot;</span>
+             <span class="na">version=</span><span class="s">&quot;2.1&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;persistence-unit</span> <span class="na">name=</span><span class="s">&quot;fruits&quot;</span> <span class="na">transaction-type=</span><span class="s">&quot;RESOURCE_LOCAL&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;provider&gt;</span>org.hibernate.jpa.HibernatePersistenceProvider<span class="nt">&lt;/provider&gt;</span>
+        <span class="nt">&lt;class&gt;</span>fruitmgr.domain<span class="nt">&lt;/class&gt;</span>
+    <span class="nt">&lt;/persistence-unit&gt;</span>
+<span class="nt">&lt;/persistence&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">În dosarul <em>resources</em> adăugați fișierul <em>hibernate.properties</em> cu următorul conținut:</p>
+<div class="highlight-properties"><div class="highlight"><pre><span class="na">hibernate.dialect</span><span class="o">=</span><span class="s">org.hibernate.dialect.H2Dialect</span>
+<span class="na">hibernate.connection.url</span><span class="o">=</span><span class="s">jdbc:h2:file:./target/h2db/db/fruitmgr</span>
+<span class="na">hibernate.connection.driver_class</span><span class="o">=</span><span class="s">org.h2.Driver</span>
+<span class="na">hibernate.connection.password</span><span class="o">=</span><span class="s">sa</span>
+<span class="na">hibernate.connection.username</span><span class="o">=</span>
+<span class="na">hibernate.hbm2ddl.auto</span><span class="o">=</span><span class="s">update</span>
+<span class="na">hibernate.show_sql</span><span class="o">=</span><span class="s">true</span>
+<span class="na">hibernate.format_sql</span><span class="o">=</span><span class="s">true</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Treceți la fișierul <em>pom.xml</em> și adăugați dependința pentru baza de date H2 (<a class="reference external" href="http://www.h2database.com/">http://www.h2database.com/</a>):</p>
+<div class="highlight-xml"><div class="highlight"><pre><span class="c">&lt;!-- https://mvnrepository.com/artifact/com.h2database/h2 --&gt;</span>
+<span class="nt">&lt;dependency&gt;</span>
+    <span class="nt">&lt;groupId&gt;</span>com.h2database<span class="nt">&lt;/groupId&gt;</span>
+    <span class="nt">&lt;artifactId&gt;</span>h2<span class="nt">&lt;/artifactId&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.4.192<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Treceți în clasa <em>FruitManagerApp</em> și adăugați metoda <code class="code docutils literal"><span class="pre">main</span></code>:</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">EntityManagerFactory</span> <span class="n">entityManagerFactory</span> <span class="o">=</span> <span class="n">Persistence</span><span class="o">.</span><span class="na">createEntityManagerFactory</span><span class="o">(</span><span class="s">&quot;fruits&quot;</span><span class="o">);</span>
+    <span class="n">EntityManager</span> <span class="n">entityManager</span> <span class="o">=</span> <span class="n">entityManagerFactory</span><span class="o">.</span><span class="na">createEntityManager</span><span class="o">();</span>
+
+    <span class="n">Fruit</span> <span class="n">fruit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fruit</span><span class="o">();</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;Mere (kg)&quot;</span><span class="o">);</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mf">14.95</span><span class="o">));</span>
+    <span class="n">entityManager</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">fruit</span><span class="o">);</span>
+
+    <span class="n">fruit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fruit</span><span class="o">();</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;Avocado (buc)&quot;</span><span class="o">);</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mf">12.45</span><span class="o">));</span>
+    <span class="n">entityManager</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">fruit</span><span class="o">);</span>
+
+    <span class="n">entityManager</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="n">entityManagerFactory</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Rulați programul! Dacă ultimul rînd din cele afișate de program va fi:</p>
+<div class="highlight-bash"><div class="highlight"><pre>Process finished with <span class="nb">exit</span> code 0
+</pre></div>
+</div>
+<p>atunci totul e ok.</p>
+</li>
+<li><p class="first">Treceți în clasa <em>FruitManagerApp</em> și înlocuiți metoda <code class="code docutils literal"><span class="pre">main</span></code>: cu</p>
+<div class="highlight-java"><div class="highlight"><pre><span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="o">{</span>
+    <span class="n">EntityManagerFactory</span> <span class="n">entityManagerFactory</span> <span class="o">=</span> <span class="n">Persistence</span><span class="o">.</span><span class="na">createEntityManagerFactory</span><span class="o">(</span><span class="s">&quot;fruits&quot;</span><span class="o">);</span>
+    <span class="n">EntityManager</span> <span class="n">entityManager</span> <span class="o">=</span> <span class="n">entityManagerFactory</span><span class="o">.</span><span class="na">createEntityManager</span><span class="o">();</span>
+
+    <span class="n">Fruit</span> <span class="n">fruit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fruit</span><span class="o">();</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;Mere (kg)&quot;</span><span class="o">);</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mf">14.95</span><span class="o">));</span>
+    <span class="n">entityManager</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">fruit</span><span class="o">);</span>
+
+    <span class="n">fruit</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Fruit</span><span class="o">();</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setName</span><span class="o">(</span><span class="s">&quot;Avocado (buc)&quot;</span><span class="o">);</span>
+    <span class="n">fruit</span><span class="o">.</span><span class="na">setPrice</span><span class="o">(</span><span class="n">BigDecimal</span><span class="o">.</span><span class="na">valueOf</span><span class="o">(</span><span class="mf">12.45</span><span class="o">));</span>
+    <span class="n">entityManager</span><span class="o">.</span><span class="na">persist</span><span class="o">(</span><span class="n">fruit</span><span class="o">);</span>
+
+    <span class="n">entityManager</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+    <span class="n">entityManagerFactory</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="o">}</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Rulați aplicația! Trebuie să fie afișat lista fructelor introduse recent în baza de date.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="entitymanager2">
+<h3>2.2.1.2. EntityManager2<a class="headerlink" href="#entitymanager2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Să nu fie mai multe produse cu același nume.</li>
+<li>Adugați un atribut pentru a păstra data expirării.</li>
+</ol>
+</div>
+<div class="section" id="id1">
+<h3>2.2.1.3. EntityManager2<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Adăugați o nouă entitate pentru unitatea de măsură.</li>
+<li>Adăugați o nouă entitate pentru țara de proveniență.</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="../../index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">2.2. Gestionarul de entități JPA (EntityManager)</a><ul>
+<li><a class="reference internal" href="#exercitii">2.2.1. Exerciții</a><ul>
+<li><a class="reference internal" href="#entitymanager">2.2.1.1. EntityManager</a></li>
+<li><a class="reference internal" href="#entitymanager2">2.2.1.2. EntityManager2</a></li>
+<li><a class="reference internal" href="#id1">2.2.1.3. EntityManager2</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">2. Persistență (JPA)</a><ul>
+      <li>Previous: <a href="../entitati/entitati.html" title="previous chapter">2.1. Entități JPA</a></li>
+      <li>Next: <a href="../../componente/index.html" title="next chapter">3. Componente (sau Enterprise Java Beans)</a></li>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="../../_sources/persistenta/gestionar entitati/gestionar entitati.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2016, Radu Dumbrăveanu.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.6</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.7</a>
+      
+      |
+      <a href="../../_sources/persistenta/gestionar entitati/gestionar entitati.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
