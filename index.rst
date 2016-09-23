@@ -66,6 +66,10 @@ Note de curs
    cuv. introd/index.rst
    persistenta/index.rst
    componente/index.rst
+   web/index.rst
+   tipare proiectare/index.rst
+   servicii web/index.rst
+   mesagerie/index.rst
 
 
 
