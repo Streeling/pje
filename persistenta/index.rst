@@ -1,9 +1,10 @@
-======================================
-Persistența (sau Java Persistance API)
-======================================
+==================================
+Persistența (Java Persistance API)
+==================================
 
 .. toctree::
    :maxdepth: 2
    :numbered:
 
-   hibernate/hibernate.rst
+   entitati/entitati.rst
+   gestionar entitati/gestionar entitati.rst
