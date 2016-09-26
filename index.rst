@@ -71,7 +71,26 @@ Note de curs
    servicii web/index.rst
    mesagerie/index.rst
 
+Laboratoare
+-----------
 
+.. toctree::
+   :maxdepth: 1
+   :numbered:
+
+   laboratoare/pregatire_mediu_de_lucru/pregatire_mediu_de_lucru.rst
+   laboratoare/gestionarul_de_entitati_jpa/index.rst
+   laboratoare/maparea_entitatilor/index.rst
+   laboratoare/relatii_dintre_entitati/index.rst
+   laboratoare/interogari_in_jpa/index.rst
+   laboratoare/mvc/index.rst
+   laboratoare/mvc/index.rst
+   laboratoare/validare/index.rst
+   laboratoare/validare/index.rst
+   laboratoare/ejb/index.rst
+   laboratoare/securitate/index.rst
+   laboratoare/util_concurrent/index.rst
+   laboratoare/batch/index.rst
 
 Indices and tables
 ==================

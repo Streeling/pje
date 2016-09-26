@@ -8,3 +8,4 @@ Persistența (Java Persistance API)
 
    entitati/entitati.rst
    gestionar entitati/gestionar entitati.rst
+   hibernate/hibernate.rst
