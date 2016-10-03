@@ -7,5 +7,9 @@ Persistența (Java Persistance API)
    :numbered:
 
    entitati/entitati.rst
-   gestionar entitati/gestionar entitati.rst
+   gestionar_entitati/gestionar_entitati.rst
    hibernate/hibernate.rst
+   validare/validare.rst
+   relatii/relatii.rst
+   mostenire/mostenire.rst
+   interogari/interogari.rst

@@ -63,10 +63,10 @@ Note de curs
    :maxdepth: 2
    :numbered:
 
-   cuv. introd/index.rst
+   cuv_introd/index.rst
    persistenta/index.rst
-   componente/index.rst
-   web/index.rst
+   aplicatii_web/index.rst
+   componente/index.rst   
    tipare proiectare/index.rst
    servicii web/index.rst
    mesagerie/index.rst
