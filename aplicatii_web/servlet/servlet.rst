@@ -17,6 +17,8 @@ Formarea raspunsului HTTP
 Exerciții
 =========
 
+.. _creare-servlet:
+
 Crearea unui proiect web model bazat pe servlet-uri
 ---------------------------------------------------
 
