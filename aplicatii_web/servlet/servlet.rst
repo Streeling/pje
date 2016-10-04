@@ -73,27 +73,23 @@ Crearea unui proiect web model bazat pe servlet-uri
            <url-pattern>/</url-pattern>
          </servlet-mapping>
 
-Rularea unui proiect web model bazat pe servlet-uri
----------------------------------------------------
+#. Rulați servlet-ul:
 
-IntelliJ IDEA Community
-^^^^^^^^^^^^^^^^^^^^^^^
+   a. În *IntelliJ IDEA Community*:
 
-#. :ref:`Instalați plugin-ul <instalare-plugin-intellij-idea>` IDEA Jetty Runner.
-#. Din meniul principal *Run > Edit Configurations...*
-#. Clic pe butonașul *+* și din lista de selecție alegeți *Jetty Runner*.
-#. Completați *Name* cu *HelloWorldServletApp*.
-#. Din meniul principal *Run > Run 'HelloWorldServletApp'*.
-#. În navigator (Firefox, Google Chrome etc) accesați adresa *localhost:8080*.
+      i. :ref:`Instalați plugin-ul <instalare-plugin-intellij-idea>` IDEA Jetty Runner, dacă nu e deja instalat.
+      #. Din meniul principal *Run > Edit Configurations...*
+      #. Clic pe butonașul *+* și din lista de selecție alegeți *Jetty Runner*.
+      #. Completați *Name* cu *HelloWorldServletApp*.
+      #. Din meniul principal *Run > Run 'HelloWorldServletApp'*.
+      #. În navigator (Firefox, Google Chrome etc) accesați adresa *localhost:8080*.
+	  
+   #. În *Eclipse*:
 
-
-Eclipse
-^^^^^^^
-
-În curînd...
-
-Dinamic
--------
+      i. În curînd...   
+		 
+Afișarea datei curente
+----------------------
 
 Modificați *HelloWorldServlet* astfel încît mai jos de 
 
@@ -103,7 +99,18 @@ Modificați *HelloWorldServlet* astfel încît mai jos de
    
 să afișeze data și ora curentă înuntrul perechii de tag-uri *<h2>...</h2>*.
 
-Lista
------
+Afișarea listei de entități
+---------------------------
 
-Avem o listă de obiecte de tip X afișați aceste obiecet în *<ul></ul>*.
+Creați în memorie un tablou care să conțină circa 10 entitați *Fruit*. Afișați acest entități într-un format plăcut pentru utilizator.
+
+Crearea unui alt servlet
+------------------------
+
+Creați un alt servlet *SearchServlet* care poate fi accesat prin adresa */search*. Servlet-ul trebuie să afișeze un formular de căutare.
+
+Crearea unui alt servlet
+------------------------
+
+Creați un alt servlet *FruitServlet* care poate fi accesat prin adresa */update*. Servlet-ul trebuie să afișeze un formular de creare.
+
