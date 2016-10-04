@@ -14,10 +14,13 @@ Biblioteci de tag-uri
 Exerciții
 =========
 
-11
---
+.. _creare-servlet-jsp:
 
-#. :ref:`Creați un Servlet <creare-servlet>` cu numele
+Crearea unui proiect web model bazat pe servlet-uri și JSP
+----------------------------------------------------------
+
+#. :ref:`Creați un Servlet <creare-servlet>` cu numele *FruitShop*.
+#. Creați clasa servlet :code:`HomeServlet`. 
 #. În dosarul *webapp/WEB-INF* creați dosarul *pages*.
 #. În acest dosar adăugați fișierul *home.jsp*:
 
